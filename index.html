@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+    <meta charset="UTF-8">
+    <title>我的导航</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header></header>  
+  <main>
+      <div class="wrapper" id=mainXX></div>
+
+  </main>
+  <footer></footer>
+  <script>
+      var keys={
+          0:['q','w','e','r','t','y','u','i','o','p'],
+          1:['a','s','d','f','g','h','j','k','l'],
+          2:['z','x','c','v','b','n','m'],
+          length:3
+      }
+      var hash={
+          q:'https://qzone.qq.com/',w:'https://weibo.com/',t:'https://www.taobao.com/',i:'http://www.iqiyi.com/',
+          a:'https://www.amazon.cn/',d:'https://www.douban.com/',g:'http://sh.ganji.com/',j:'https://www.jd.com/',
+          z:'http://www.zhaopin.com/',m:'http://www.meituan.com/'
+      }
+      var hashInlocalStorage=JSON.parse(localStorage.getItem('zzz')||'null')
+        if(hashInlocalStorage) {
+            hash=hashInlocalStorage
+        }
+
+      index=0
+      while(index<keys['length']) {
+        divXX=document.createElement("div")
+        mainXX.appendChild(divXX)
+        row=keys[index] //第一个数组，第二个数组，第三个数组，给row
+        index2=0
+        while(index2<row['length']) {
+            kbdXX=document.createElement("kbd")
+            kbdXX.textContent=row[index2]
+            divXX.appendChild(kbdXX)
+            buttonXX=document.createElement("button")
+            buttonXX.textContent="编辑"
+            buttonXX.id=row[index2]
+            kbdXX.appendChild(buttonXX)
+            buttonXX.onclick = function(zxc) {
+                key=zxc['target']['id']
+                x=prompt('输入你想要的改成的网址')
+                hash[key]=x
+            }
+            index2=index2+1
+        }
+        index=index+1
+      }
+
+        document.onkeypress = function(zxcvb) {
+            key = zxcvb['key']
+            website = hash[key] //哈希变更
+            localStorage.setItem('zzz',JSON.stringify(hash))
+            window.open(website,'_blank')
+        }
+
+
+
+
+  </script>
+</body>
+</html>
