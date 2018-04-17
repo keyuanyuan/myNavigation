@@ -26,10 +26,12 @@
             t: 'https://www.taobao.com/',
             i: 'http://www.iqiyi.com/',
             a: 'https://www.amazon.cn/',
+            s: 'https://sm.ms/',
             d: 'https://www.douban.com/',
-            g: 'http://sh.ganji.com/',
-            j: 'https://www.jd.com/',
-            z: 'http://www.zhaopin.com/',
+            g: 'https://github.com/github',
+            j: 'https://www.jianshu.com/',
+            z: 'https://www.zhihu.com/',
+            x: 'https://xiedaimala.com/',
             m: 'http://www.meituan.com/'
         }
         var hashInlocalStorage = JSON.parse(localStorage.getItem('zzz') || 'null')
@@ -46,8 +48,20 @@
             index2 = 0
             while (index2 < row['length']) {
                 kbdXX = document.createElement("kbd")
-                kbdXX.textContent = row[index2]
+                span = document.createElement("span")
+                span.textContent = row[index2]
                 divXX.appendChild(kbdXX)
+                kbdXX.appendChild(span)
+                
+                img = document.createElement("img")
+                    if(hash[row[index2]]) {
+                        img.src = hash[row[index2]] + '/favicon.ico'
+                    } else
+                        img.src = 'https://i.loli.net/2017/11/10/5a05afbc5e183.png'
+                    img.onerror =function(xxx) {
+                        xxx.target.src = 'https://i.loli.net/2017/11/10/5a05afbc5e183.png'
+                    }
+                kbdXX.appendChild(img)
                 buttonXX = document.createElement("button")
                 buttonXX.textContent = "编辑"
                 buttonXX.id = row[index2]

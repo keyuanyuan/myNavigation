@@ -7,36 +7,55 @@ a {
     text-decoration: none;
 }
 body {
-    background: url(./img/star.jpg) no-repeat center center;
+    background: grey url(./img/star.jpg) no-repeat center center; 
 }
-
+main {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
 .wrapper {
     background:rgba(255, 255, 255, 0.2);
     border-radius: 6px;
-
 }
 .wrapper > .row {
     margin: 23px;
+
 }
 
 kbd {
     text-transform: uppercase;
     position: relative;
-    border: 1px solid #747474;
+    border: 1px solid #373737;
     border-radius: 6px;
     box-shadow: 0 0 0 1px #1a1b1c, 0 0 0 2px #1f2020, 0 4px 0 0 #080808;
     height: 40px;
     width: 50px;
     font-family: Helvetica;
     font-size: 16px;
-    color: white;
+    color: #c5c5c5;
     background-color: black;
     display: inline-flex;
     justify-content: center;
     align-items: center;
     margin: 0 10px;
+    background: linear-gradient(to bottom, #292929 0%,#111111 100%);
+    position: relative;
 }
-
+kbd > span {
+    position: absolute;
+    left: 4px;
+    top: 2px;
+}
+kbd > img {
+    height: 14px;
+    width: 14px;
+    position: absolute;
+    left: 4px;
+    bottom: 2px;
+}
 kbd>button {
     position: absolute;
     right: 0;
