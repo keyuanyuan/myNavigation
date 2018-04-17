@@ -10,10 +10,12 @@
 <body>
     <header></header>
     <main>
-        <div class="wrapper" id=mainXX></div>
+        <div class="wrapper" id=main></div>
     </main>
     <footer></footer>
+    
     <script>
+        // 1.初始化数据
         var keys = {
             0: ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p'],
             1: ['a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l'],
@@ -38,51 +40,78 @@
         if (hashInlocalStorage) {
             hash = hashInlocalStorage
         }
-
-        index = 0
-        while (index < keys['length']) {
-            divXX = document.createElement("div")
-            divXX.className = "row"
-            mainXX.appendChild(divXX)
+        // 2.生成键盘
+        for (index=0;index < keys['length'];index++) {
+            var div = tag('div')
+            div.className = "row"
+            main.appendChild(div)
             row = keys[index] //第一个数组，第二个数组，第三个数组，给row
-            index2 = 0
-            while (index2 < row['length']) {
-                kbdXX = document.createElement("kbd")
-                span = document.createElement("span")
-                span.textContent = row[index2]
-                divXX.appendChild(kbdXX)
-                kbdXX.appendChild(span)
-                
-                img = document.createElement("img")
-                    if(hash[row[index2]]) {
-                        img.src = hash[row[index2]] + '/favicon.ico'
-                    } else
-                        img.src = 'https://i.loli.net/2017/11/10/5a05afbc5e183.png'
-                    img.onerror =function(xxx) {
-                        xxx.target.src = 'https://i.loli.net/2017/11/10/5a05afbc5e183.png'
-                    }
-                kbdXX.appendChild(img)
-                buttonXX = document.createElement("button")
-                buttonXX.textContent = "编辑"
-                buttonXX.id = row[index2]
-                kbdXX.appendChild(buttonXX)
-                buttonXX.onclick = function (zxc) {
+            for (index2=0;index2 < row['length'];index2++) {
+                var kbd = tag('kbd')
+                kbd.className = "key"
+               
+                var span = createSpan(row[index2])
+
+                div.appendChild(kbd)
+                kbd.appendChild(span)
+
+                img = tag('img')
+                if (hash[row[index2]]) {
+                    img.src = hash[row[index2]] + '/favicon.ico'
+                } else
+                    img.src = 'https://i.loli.net/2017/11/10/5a05afbc5e183.png'
+                img.onerror = function (xxx) {
+                    xxx.target.src = 'https://i.loli.net/2017/11/10/5a05afbc5e183.png'
+                }
+                kbd.appendChild(img)
+                button = tag('button')
+                button.textContent = "编辑"
+                button.id = row[index2]
+                kbd.appendChild(button)
+                button.onclick = function (zxc) {
                     key = zxc['target']['id']
                     x = prompt('输入你想要的改成的网址')
                     hash[key] = x
+                //var button = createButton(row[index2])
                 }
-                index2 = index2 + 1
-            }
-            index = index + 1
-        }
 
+            }
+  
+        }
+        // 3.监听用户动作
         document.onkeypress = function (zxcvb) {
             key = zxcvb['key']
             website = hash[key] //哈希变更
             localStorage.setItem('zzz', JSON.stringify(hash))
             window.open(website, '_blank')
         }
+
+        // 函数
+        //  1.生成标签的函数
+        function tag(tagName) {
+            return document.createElement(tagName)
+        }
+        // 2.创建span
+        function createSpan(textContent) {
+            var span = tag('span')
+            span.textContent = textContent
+            span.className = 'text'
+            return span
+        }
+        // 3.创建button
+        //function createButton(id) {
+            //button = tag('button')
+               // button.textContent = "编辑"
+                //button.id = id
+                
+                //button.onclick = function (zxc) {
+                    //key = zxc['target']['id']
+                    //x = prompt('输入你想要的改成的网址')
+                    //hash[key] = x
+                    //return button
+        //}
     </script>
+
 </body>
 
 </html>

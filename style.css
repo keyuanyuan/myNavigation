@@ -1,31 +1,36 @@
-* {
-    margin: 0;
-    padding: 0;
+* { margin: 0;padding: 0;}
+a {text-decoration: none;}
+
+body {
+    background: grey url(./img/star.jpg) no-repeat center center;
 }
 
-a {
-    text-decoration: none;
-}
-body {
-    background: grey url(./img/star.jpg) no-repeat center center; 
-}
 main {
+    text-align: center;
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    
 }
+
 .wrapper {
-    background:rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.2);
     border-radius: 6px;
 }
-.wrapper > .row {
-    margin: 23px;
-
+#main {
+    display: inline-block
+}
+#main>div:nth-child(2) {
+    margin-left: -8px;
+}
+#main>div:nth-child(3) {
+    margin-left: -78px;
 }
 
-kbd {
+.wrapper>.row {
+    margin: 22px;
+}
+.wrapper>.row>.key {
     text-transform: uppercase;
     position: relative;
     border: 1px solid #373737;
@@ -41,44 +46,27 @@ kbd {
     justify-content: center;
     align-items: center;
     margin: 0 10px;
-    background: linear-gradient(to bottom, #292929 0%,#111111 100%);
+    background: linear-gradient(to bottom, #292929 0%, #111111 100%);
     position: relative;
 }
-kbd > span {
+.wrapper>.row>.key>.text {
     position: absolute;
     left: 4px;
     top: 2px;
 }
-kbd > img {
+.wrapper>.row>.key>img {
     height: 14px;
     width: 14px;
     position: absolute;
     left: 4px;
     bottom: 2px;
 }
-kbd>button {
+.wrapper>.row>.key>button {
     position: absolute;
     right: 0;
     bottom: 0;
     display: none;
 }
-
 kbd:hover>button {
     display: inline-block;
-}
-
-main {
-    text-align: center;
-}
-
-#mainXX {
-    display: inline-block;
-}
-
-#mainXX>div:nth-child(2) {
-    margin-left: -8px;
-}
-
-#mainXX>div:nth-child(3) {
-    margin-left: -78px;
 }
