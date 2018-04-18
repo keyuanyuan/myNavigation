@@ -67,6 +67,6 @@ main {
     bottom: 0;
     display: none;
 }
-kbd:hover>button {
+.wrapper>.row>.key:hover>button {
     display: inline-block;
 }
